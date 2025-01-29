@@ -1,6 +1,4 @@
 from demoqa_tests.model.pages.registration_page import RegistrationPage
-from selene.support.shared import browser
-from selene import command
 
 def test_student_registration_form():
     registration_page = RegistrationPage()
@@ -19,9 +17,8 @@ def test_student_registration_form():
        .fill_address('Moscowskaya Street 18')
        .fill_state('NCR')
        .choose_city('Delhi')
+       .submit()
     )
-
-    browser.element('#submit').perform(command.js.click)
 
     registration_page.should_registered_user_with(
         'Nikita Star',

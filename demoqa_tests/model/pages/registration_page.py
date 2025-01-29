@@ -84,6 +84,10 @@ class RegistrationPage:
         ).click()
         return self
 
+    def submit(self):
+        browser.element('#submit').perform(command.js.click)
+        return self
+
     def should_registered_user_with(self, full_name, email, gender, number, birthday, subject, hobby, picture, address, city):
         browser.element('table').all('td').even.should(
             have.exact_texts(
