@@ -1,12 +1,13 @@
+from demoqa_tests.application import app
+from demoqa_tests.data import users
 from demoqa_tests.model.pages.simple_user_registration_page import SimpleUserRegistrationPage
 
 
 def test_registers_user():
-    registration_page = SimpleUserRegistrationPage()
+    simple_registration = SimpleUserRegistrationPage()
 
-    registration_page.open()
-    registration_page.fill_full_name('Nikita S')
-    registration_page.fill_email('email@email.com')
-    registration_page.submit()
 
-    registration_page.should_have_submited('Nikita S', 'email@email.com')
+    simple_registration.open()
+    simple_registration.register(users.admin)
+    simple_registration.should_have_submited(users.admin)
+    print(simple_registration.should_have_submited(users.admin))
